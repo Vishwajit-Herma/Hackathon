@@ -6,7 +6,8 @@ const authRoutes = require('./routes/index');
 const profileRoutes = require('./routes/profile');
 const sellRoute = require('./routes/sell'); 
 const path = require('path');
-const buyRoute = require('./routes/buy')
+const buyRoute = require('./routes/buy');
+const rentRoute = require('./routes/rent')
 const app = express();
 
 // Connect to MongoDB
@@ -26,6 +27,7 @@ app.set('view engine', 'ejs');
 app.use('/', authRoutes);
 app.use('/', sellRoute);
 app.use('/', buyRoute);
+app.use('/', rentRoute);
 // Assuming the profile routes are in routes/profile.js
 
 

@@ -10,7 +10,7 @@ const UserProfile = require('./profileModel');
 
 // Render the index page
 router.get('/', (req, res) => {
-    res.render('navbar');
+    res.render('index');
 });
 
 // Handle phone number submission

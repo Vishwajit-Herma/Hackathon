@@ -6,7 +6,9 @@
   <title>Navbar Example</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body >
+
+    
   <nav class="bg-white-800 text-black p-4" font-bold>
     <div class="container  flex justify-between items-center mr-500 m">
       <!-- Logo Section -->
@@ -27,9 +29,36 @@
     </div>
   </nav>
 
+<div >
+
+
+  <footer class=" text-black py-4">
+    <div class="relative overflow-hidden h-20">
+        <div id="slidingText" class="absolute whitespace-nowrap">
+            <span class="text-4xl font-bold">Welcome to AgriNet</span>
+        </div>
+    </div>
+</footer>
+
+<style>
+    @keyframes slideLeft {
+        0% {
+            transform: translateX(100%);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+
+    #slidingText {
+        animation: slideLeft 8s linear infinite;
+        width: 100%;
+        height: 100%;
+    }
+</style>
 
   <!-- Cards Section -->
-  <div class="container mx-auto px-4 py-8">
+  <div class="container mx-auto px-4 py-8 ">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-10 h-64">
       <!-- Sell Card -->
       <div class="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col items-center">
@@ -56,6 +85,10 @@
       </div>
     </div>
   </div>
+
+</div>
+
+
 
 </body>
 </html>

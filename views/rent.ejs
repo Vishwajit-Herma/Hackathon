@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="container mx-auto p-4">
+        <h1 class="text-2xl font-bold mb-4">Rent Equipment</h1>
+
+     
+    
+        <!-- Section to choose the type of rental -->
+        <div class="mb-4">
+            <h2 class="text-lg font-semibold mb-2">What would you like to do?</h2>
+            <button id="takeRentBtn" class="bg-blue-500 text-white px-4 py-2 rounded mr-2">Take on Rent</button>
+            <button id="giveRentBtn" class="bg-green-500 text-white px-4 py-2 rounded">Give on Rent</button>
+        </div>
+    
+        <!-- Form for taking equipment on rent -->
+        <div id="takeRentForm" class="hidden mt-4 p-4 border rounded">
+            <h3 class="text-xl font-semibold mb-2">Take Equipment on Rent</h3>
+            <form action="/rent/take" method="POST">
+                <label class="block mb-2">Equipment Type:</label>
+                <select name="equipmentType" class="block mb-4 p-2 border rounded w-full max-w-xs">
+                    <option value="Tractor">Equipments</option>
+                    <option value="Harvester">Vehicles</option>
+                    <option value="Plough">Cattles</option>
+                    <option value="Seeder">Seeds</option>
+                    <option value="Seeder">Crops</option>
+                </select>
+    
+                <label class="block mb-2">Duration (days):</label>
+                <input type="number" name="duration" class="block mb-4 p-2 border rounded w-full max-w-xs" placeholder="Enter number of days" required>
+    
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Submit</button>
+            </form>
+        </div>
+    
+        <!-- Form for giving equipment on rent -->
+        <div id="giveRentForm" class="hidden mt-4 p-4 border rounded">
+            <h3 class="text-xl font-semibold mb-2">Give Equipment on Rent</h3>
+            <form action="/rent/give" method="POST">
+
+            <label class="block mb-2">Owner Name:</label>
+            <input type="text" name="ownerName" class="block mb-4 p-2 border rounded w-full max-w-xs" placeholder="Enter owner name" required>
+
+            <label class="block mb-2">Address:</label>
+            <input type="text" name="address" class="block mb-4 p-2 border rounded w-full max-w-xs" placeholder="Enter address" required>
+
+            <label class="block mb-2">Phone Number:</label>
+            <input type="tel" name="phoneNumber" class="block mb-4 p-2 border rounded w-full max-w-xs" placeholder="Enter phone number" required>
+                <label class="block mb-2">Equipment Type:</label>
+                <select name="equipmentType" class="block mb-4 p-2 border rounded w-full max-w-xs">
+                    <option value="Tractor">Equipments</option>
+                    <option value="Harvester">Vehicles</option>
+                    <option value="Plough">Cattles</option>
+                    <option value="Seeder">Seeds</option>
+                    <option value="Seeder">Crops</option>
+                </select>
+    
+                <label class="block mb-2">Rental Price per Day:</label>
+                <input type="number" name="pricePerDay" class="block mb-4 p-2 border rounded w-full max-w-xs" placeholder="Enter price per day" required>
+    
+                <label class="block mb-2">Available From:</label>
+                <input type="date" name="availableFrom" class="block mb-4 p-2 border rounded w-full max-w-xs" required>
+    
+                <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Submit</button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('takeRentBtn').addEventListener('click', function() {
+            document.getElementById('takeRentForm').classList.remove('hidden');
+            document.getElementById('giveRentForm').classList.add('hidden');
+        });
+    
+        document.getElementById('giveRentBtn').addEventListener('click', function() {
+            document.getElementById('giveRentForm').classList.remove('hidden');
+            document.getElementById('takeRentForm').classList.add('hidden');
+        });
+    </script>
+    
+  </body>
+</html>

@@ -42,7 +42,7 @@ router.post('/sell', upload.single('photo'), async (req, res) => {
     });
 
     await newEquipment.save();
-    res.redirect('/'); // Redirect to a success page or any other page
+    res.redirect('/sell'); // Redirect to a success page or any other page
   } catch (error) {
     console.error(error);
     res.status(500).send('Server Error');
