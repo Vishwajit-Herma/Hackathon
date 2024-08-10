@@ -1,41 +1,34 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+require('dotenv').config();
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const authRoutes = require('./routes/index');
+const profileRoutes = require('./routes/profile');
+const sellRoute = require('./routes/sell'); 
+const path = require('path');
+const buyRoute = require('./routes/buy')
+const app = express();
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+// Connect to MongoDB
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-var app = express();
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
+// Middleware
+app.use('/profile', profileRoutes);
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+// Routes
+app.use('/', authRoutes);
+app.use('/', sellRoute);
+app.use('/', buyRoute);
+// Assuming the profile routes are in routes/profile.js
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
 
 module.exports = app;
